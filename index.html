@@ -3,132 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TECT</title>
+    <title>Свободное Пространство — Подбор И Каталог</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>СВОБОДНОЕ ПРОСТРАНСТВО</h1>
-
-        <!-- Выпадающее меню с ассортиментом -->
-        <div class="dropdown">
-            <button class="dropbtn">Выбрать тип стекла ▼</button>
-            <div class="dropdown-content">
-                <div class="glass-item" onclick="selectGlass('закалённое', 2500)">
-                    <img src="https://avatars.mds.yandex.net/get-altay/15285331/2a00000194d0122c6d390b2bd3f73dad136e/orig" alt="Закалённое">
-            <div class="glass-info">
-                <h4>Закалённое стекло</h4>
-                <p>2500 руб/м²</p>
-            </div>
-                </div>
-                <div class="glass-item" onclick="selectGlass('триплекс', 3800)">
-            <img src="https://static.tildacdn.com/tild6330-3938-4430-a265-663464326434/pikaso_texttoimage_l.jpeg" alt="Триплекс">
-            <div class="glass-info">
-                <h4>Триплекс</h4>
-                <p>3800 руб/м²</p>
-            </div>
-                </div>
-                <div class="glass-item" onclick="selectGlass('матовое', 1800)">
-            <img src="https://ir.ozone.ru/s3/multimedia-1-n/w1200/7001284847.jpg" alt="Матовое">
-            <div class="glass-info">
-                <h4>Матовое стекло</h4>
-                <p>1800 руб/м²</p>
-            </div>
-                </div>
-                <div class="glass-item" onclick="selectGlass('тонированное', 2200)">
-            <img src="https://glassstore.org/wp-content/uploads/foto-2-steklo-tonirovannoe-10-mm-bronza.jpg" alt="Тонированное">
-            <div class="glass-info">
-                <h4>Тонированное стекло</h4>
-                <p>2200 руб/м²</p>
-            </div>
-                </div>
-                <div class="glass-item" onclick="selectGlass('узорчатое', 2000)">
-            <img src="https://via.placeholder.com/60x40/f39c12/ffffff?text=Уз" alt="Узорчатое">
-            <div class="glass-info">
-                <h4>Узорчатое стекло</h4>
-                <p>2000 руб/м²</p>
-            </div>
-                </div>
-                <div class="glass-item" onclick="selectGlass('армированное', 3000)">
-            <img src="https://via.placeholder.com/60x40/16a085/ffffff?text=Арм" alt="Армированное">
-            <div class="glass-info">
-                <h4>Армированное стекло</h4>
-                <p>3000 руб/м²</p>
-            </div>
-                </div>
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">
+                <h1>Свободное Пространство</h1>
+                <p>Сайт Для Консультантов И Руководителей</p>
             </div>
         </div>
+    </header>
 
-        <!-- Ассортимент -->
-        <section class="products">
-            <h2>Ассортимент стекла</h2>
-            <div class="product-grid">
-                <div class="product-card">
-            <img src="https://avatars.mds.yandex.net/get-altay/15285331/2a00000194d0122c6d390b2bd3f73dad136e/orig" alt="Закалённое стекло">
-            <h3>Закалённое стекло</h3>
-            <p>Толщина: 4–19 мм</p>
-            <p>Цена: 2500 руб/м²</p>
-                </div>
-                <div class="product-card">
-            <img src="https://static.tildacdn.com/tild6330-3938-4430-a265-663464326434/pikaso_texttoimage_l.jpeg" alt="Триплекс">
-            <h3>Триплекс</h3>
-            <p>Толщина: 6–40 мм</p>
-            <p>Цена: 3800 руб/м²</p>
-                </div>
-                <div class="product-card">
-            <img src="https://ir.ozone.ru/s3/multimedia-1-n/w1200/7001284847.jpg" alt="Матовое стекло">
-            <h3>Матовое стекло</h3>
-            <p>Толщина: 4–12 мм</p>
-            <p>Цена: 1800 руб/м²</p>
-                </div>
-                <div class="product-card">
-            <img src="https://glassstore.org/wp-content/uploads/foto-2-steklo-tonirovannoe-10-mm-bronza.jpg" alt="Тонированное стекло">
-            <h3>Тонированное стекло</h3>
-            <p>Толщина: 4–8 мм</p>
-            <p>Цена: 2200 руб/м²</p>
-                </div>
-            </div>
-        </section>
+    <main class="main-content">
+        <div class="container">
 
-        <!-- Калькулятор -->
-        <section class="calculator">
-            <h2>Калькулятор расчёта стоимости</h2>
-            <form id="glassCalculator">
-                <div class="form-group">
-            <label for="glassType">Выбранный тип стекла:</label>
-            <input type="text" id="glassType" name="glassType" readonly>
+            <!-- Блок выбора стекла -->
+            <section class="glass-selector">
+                <h2>Выберите тип стекла</h2>
+                
+                <div class="glass-grid" id="glassGrid">
+                    <div class="glass-card" data-glass="закалённое" data-price="2500" onclick="selectGlass('закалённое', 2500)">
+                        <div class="glass-img" style="background-image: url('https://avatars.mds.yandex.net/get-altay/15285331/2a00000194d0122c6d390b2bd3f73dad136e/orig')"></div>
+                        <div class="glass-info">
+                            <h3>Закалённое стекло</h3>
+                            <div class="specs">
+                                <span>Толщина: 4–19 мм</span>
+                                <span class="price">2 500 ₽/м²</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card" data-glass="триплекс" data-price="3800" onclick="selectGlass('триплекс', 3800)">
+                        <div class="glass-img" style="background-image: url('https://static.tildacdn.com/tild6330-3938-4430-a265-663464326434/pikaso_texttoimage_l.jpeg')"></div>
+                        <div class="glass-info">
+                            <h3>Триплекс</h3>
+                            <div class="specs">
+                                <span>Толщина: 6–40 мм</span>
+                                <span class="price">3 800 ₽/м²</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card" data-glass="матовое" data-price="1800" onclick="selectGlass('матовое', 1800)">
+                        <div class="glass-img" style="background-image: url('https://ir.ozone.ru/s3/multimedia-1-n/w1200/7001284847.jpg')"></div>
+                        <div class="glass-info">
+                            <h3>Матовое стекло</h3>
+                            <div class="specs">
+                                <span>Толщина: 4–12 мм</span>
+                                <span class="price">1 800 ₽/м²</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card" data-glass="тонированное" data-price="2200" onclick="selectGlass('тонированное', 2200)">
+                        <div class="glass-img" style="background-image: url('https://glassstore.org/wp-content/uploads/foto-2-steklo-tonirovannoe-10-mm-bronza.jpg')"></div>
+                        <div class="glass-info">
+                            <h3>Тонированное стекло</h3>
+                            <div class="specs">
+                                <span>Толщина: 4–8 мм</span>
+                                <span class="price">2 200 ₽/м²</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card" data-glass="узорчатое" data-price="2000" onclick="selectGlass('узорчатое', 2000)">
+                        <div class="glass-img" style="background-image: url('https://via.placeholder.com/300x200/f39c12/ffffff?text=УЗОРЧАТОЕ')"></div>
+                        <div class="glass-info">
+                            <h3>Узорчатое стекло</h3>
+                            <div class="specs">
+                                <span>Толщина: 4–10 мм</span>
+                                <span class="price">2 000 ₽/м²</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card" data-glass="армированное" data-price="3000" onclick="selectGlass('армированное', 3000)">
+                        <div class="glass-img" style="background-image: url('https://via.placeholder.com/300x200/16a085/ffffff?text=АРМИРОВАННОЕ')"></div>
+                        <div class="glass-info">
+                            <h3>Армированное стекло</h3>
+                            <div class="specs">
+                                <span>Толщина: 5–12 мм</span>
+                                <span class="price">3 000 ₽/м²</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="form-group">
-            <label for="width">Ширина (мм):</label>
-            <input type="number" id="width" name="width" min="100" max="3210" value="1000">
+                <div class="selected-glass" id="selectedGlass">
+                    <span>Выбрано:</span>
+                    <strong id="selectedGlassName">Не выбрано</strong>
+                    <span id="selectedGlassPrice"></span>
                 </div>
+            </section>
 
-                <div class="form-group">
-            <label for="height">Высота (мм):</label>
-            <input type="number" id="height" name="height" min="100" max="2250" value="1000">
+            <!-- Калькулятор -->
+            <section class="calculator">
+                <h2>Калькулятор стоимости</h2>
+                
+                <form id="glassCalculator" class="calc-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="glassType">Тип стекла</label>
+                            <input type="text" id="glassType" readonly placeholder="Выберите тип стекла…">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="width">Ширина (мм)</label>
+                            <input type="number" id="width" min="100" max="3210" value="1000" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="height">Высота (мм)</label>
+                            <input type="number" id="height" min="100" max="2250" value="1000" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="quantity">Количество</label>
+                            <input type="number" id="quantity" min="1" value="1" required>
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn-calc" onclick="calculateCost()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                        Рассчитать
+                    </button>
+                </form>
+
+                <!-- Результат -->
+                <div id="result" class="result-card hidden">
+                    <h3>Результат расчёта</h3>
+                    <div class="result-grid">
+                        <div class="result-item">
+                            <span>Тип стекла:</span>
+                            <strong id="resultType">-</strong>
+                        </div>
+                        <div class="result-item">
+                            <span>Размер:</span>
+                            <strong id="resultSize">-</strong> мм
+                        </div>
+                        <div class="result-item">
+                            <span>Площадь:</span>
+                            <strong id="resultArea">-</strong> м²
+                        </div>
+                        <div class="result-item">
+                            <span>Кол-во:</span>
+                            <strong id="resultQuantity">-</strong> шт.
+                        </div>
+                        <div class="result-item">
+                            <span>Цена за м²:</span>
+                            <strong id="resultPrice">-</strong> ₽
+                        </div>
+                        <div class="result-item total">
+                            <span>Итого:</span>
+                            <strong id="resultTotal">-</strong> ₽
+                        </div>
+                    </div>
                 </div>
+            </section>
 
-                <div class="form-group">
-            <label for="quantity">Количество:</label>
-            <input type="number" id="quantity" name="quantity" min="1" value="1">
-                </div>
+        </div>
+    </main>
 
-                <button type="button" onclick="calculateCost()">Рассчитать</button>
-            </form>
-
-            <!-- Результат -->
-            <div id="result" class="result">
-                <h3>Результат расчёта:</h3>
-                <p><strong>Тип стекла:</strong> <span id="resultType">-</span></p>
-                <p><strong>Размер:</strong> <span id="resultSize">-</span> мм</p>
-                <p><strong>Площадь:</strong> <span id="resultArea">-</span> м²</p>
-                <p><strong>Количество:</strong> <span id="resultQuantity">-</span> шт.</p>
-                <p><strong>Цена за м²:</strong> <span id="resultPrice">-</span> руб.</p>
-                <p class="total"><strong>Итого:</strong> <span id="resultTotal">-</span> руб.</p>
-            </div>
-        </section>
-    </div>
+    <footer class="site-footer">
+        <div class="container">
+            <p>© 2023 СТЕКЛОПРО. Все права защищены.</p>
+            <p>г. Москва, +7 (495) 123-45-67</p>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>

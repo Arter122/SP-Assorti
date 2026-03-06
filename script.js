@@ -1,54 +1,51 @@
-// Переменные для хранения данных калькулятора
-let selectedGlassType = '';
-let selectedPricePerM2 = 0;
+let selectedGlass = null;
 
-// Функция выбора типа стекла из выпадающего меню
+// Выбор типа стекла
 function selectGlass(type, price) {
-    selectedGlassType = type;
-    selectedPricePerM2 = price;
+    selectedGlass = { type, price };
     
-    // Обновляем поле в форме
+    // Обновляем поле в калькуляторе
     document.getElementById('glassType').value = type;
     
+    // Визуальная обратная связь на карточках
+    document.querySelectorAll('.glass-card').forEach(card => {
+        card.classList.remove('selected');
+    });
+    event.currentTarget.classList.add('selected');
     
-    // Закрываем выпадающее меню (убираем hover)
-    const dropdown = document.querySelector('.dropdown');
-    dropdown.classList.add('hide-dropdown');
-    setTimeout(() => {
-        dropdown.classList.remove('hide-dropdown');
-    }, 300);
+    // Обновляем блок "Выбрано"
+    document.getElementById('selectedGlassName').textContent = type;
+    document.getElementById('selectedGlassPrice').textContent = `${price.toLocaleString('ru')} ₽/м²`;
+    document.getElementById('selectedGlass').classList.remove('hidden');
 }
 
-// Функция расчёта стоимости
+// Расчет стоимости
 function calculateCost() {
-    // Получаем значения из формы
-    const width = parseFloat(document.getElementById('width').value);
-    const height = parseFloat(document.getElementById('height').value);
-    const quantity = parseInt(document.getElementById('quantity').value);
-    
-    // Проверяем, выбран ли тип стекла
-    if (!selectedGlassType) {
-        alert('Пожалуйста, выберите тип стекла из выпадающего меню!');
+    if (!selectedGlass) {
+        alert('⚠️ Пожалуйста, выберите тип стекла!');
+        document.querySelector('.glass-grid').scrollIntoView({ behavior: 'smooth' });
         return;
     }
-    
-    // Расчёт площади в м² (переводим мм в м)
-    const area = (width / 1000) * (height / 1000);
-    const totalArea = area * quantity;
-    
-    // Расчёт общей стоимости
-    const totalCost = totalArea * selectedPricePerM2;
-    
-    // Обновляем результаты на странице
-    document.getElementById('resultType').textContent = selectedGlassType;
-    document.getElementById('resultSize').textContent = `${width} × ${height}`;
-    document.getElementById('resultArea').textContent = area.toFixed(3);
-    document.getElementById('resultQuantity').textContent = quantity;
-    document.getElementById('resultPrice').textContent = selectedPricePerM2;
-    document.getElementById('resultTotal').textContent = totalCost.toFixed(2);
-}
 
-// Инициализация — очищаем результаты при загрузке
-window.onload = function() {
-    calculateCost(); // Показываем начальные значения
-};
+    const width = parseFloat(document.getElementById('width').value) / 1000;   // в метрах
+    const height = parseFloat(document.getElementById('height').value) / 1000; // в метрах
+    const quantity = parseInt(document.getElementById('quantity').value);
+
+    const area = (width * height).toFixed(2);
+    const totalArea = (area * quantity).toFixed(2);
+    const totalCost = (totalArea * selectedGlass.price).toFixed(2);
+
+    // Заполняем результат
+    document.getElementById('resultType').textContent = selectedGlass.type;
+    document.getElementById('resultSize').textContent = `${document.getElementById('width').value}×${document.getElementById('height').value}`;
+    document.getElementById('resultArea').textContent = area;
+    document.getElementById('resultQuantity').textContent = quantity;
+    document.getElementById('resultPrice').textContent = selectedGlass.price.toLocaleString('ru');
+    document.getElementById('resultTotal').textContent = totalCost.toLocaleString('ru');
+    
+    // Показываем результат
+    document.getElementById('result').classList.remove('hidden');
+    
+    // Плавный скролл к результату
+    document.getElementById('result').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
