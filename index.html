@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TECT</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>СВОБОДНОЕ ПРОСТРАНСТВО</h1>
+
+        <!-- Выпадающее меню с ассортиментом -->
+        <div class="dropdown">
+            <button class="dropbtn">Выбрать тип стекла ▼</button>
+            <div class="dropdown-content">
+                <div class="glass-item" onclick="selectGlass('закалённое', 2500)">
+                    <img src="https://avatars.mds.yandex.net/get-altay/15285331/2a00000194d0122c6d390b2bd3f73dad136e/orig" alt="Закалённое">
+            <div class="glass-info">
+                <h4>Закалённое стекло</h4>
+                <p>2500 руб/м²</p>
+            </div>
+                </div>
+                <div class="glass-item" onclick="selectGlass('триплекс', 3800)">
+            <img src="https://static.tildacdn.com/tild6330-3938-4430-a265-663464326434/pikaso_texttoimage_l.jpeg" alt="Триплекс">
+            <div class="glass-info">
+                <h4>Триплекс</h4>
+                <p>3800 руб/м²</p>
+            </div>
+                </div>
+                <div class="glass-item" onclick="selectGlass('матовое', 1800)">
+            <img src="https://ir.ozone.ru/s3/multimedia-1-n/w1200/7001284847.jpg" alt="Матовое">
+            <div class="glass-info">
+                <h4>Матовое стекло</h4>
+                <p>1800 руб/м²</p>
+            </div>
+                </div>
+                <div class="glass-item" onclick="selectGlass('тонированное', 2200)">
+            <img src="https://glassstore.org/wp-content/uploads/foto-2-steklo-tonirovannoe-10-mm-bronza.jpg" alt="Тонированное">
+            <div class="glass-info">
+                <h4>Тонированное стекло</h4>
+                <p>2200 руб/м²</p>
+            </div>
+                </div>
+                <div class="glass-item" onclick="selectGlass('узорчатое', 2000)">
+            <img src="https://via.placeholder.com/60x40/f39c12/ffffff?text=Уз" alt="Узорчатое">
+            <div class="glass-info">
+                <h4>Узорчатое стекло</h4>
+                <p>2000 руб/м²</p>
+            </div>
+                </div>
+                <div class="glass-item" onclick="selectGlass('армированное', 3000)">
+            <img src="https://via.placeholder.com/60x40/16a085/ffffff?text=Арм" alt="Армированное">
+            <div class="glass-info">
+                <h4>Армированное стекло</h4>
+                <p>3000 руб/м²</p>
+            </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ассортимент -->
+        <section class="products">
+            <h2>Ассортимент стекла</h2>
+            <div class="product-grid">
+                <div class="product-card">
+            <img src="https://avatars.mds.yandex.net/get-altay/15285331/2a00000194d0122c6d390b2bd3f73dad136e/orig" alt="Закалённое стекло">
+            <h3>Закалённое стекло</h3>
+            <p>Толщина: 4–19 мм</p>
+            <p>Цена: 2500 руб/м²</p>
+                </div>
+                <div class="product-card">
+            <img src="https://static.tildacdn.com/tild6330-3938-4430-a265-663464326434/pikaso_texttoimage_l.jpeg" alt="Триплекс">
+            <h3>Триплекс</h3>
+            <p>Толщина: 6–40 мм</p>
+            <p>Цена: 3800 руб/м²</p>
+                </div>
+                <div class="product-card">
+            <img src="https://ir.ozone.ru/s3/multimedia-1-n/w1200/7001284847.jpg" alt="Матовое стекло">
+            <h3>Матовое стекло</h3>
+            <p>Толщина: 4–12 мм</p>
+            <p>Цена: 1800 руб/м²</p>
+                </div>
+                <div class="product-card">
+            <img src="https://glassstore.org/wp-content/uploads/foto-2-steklo-tonirovannoe-10-mm-bronza.jpg" alt="Тонированное стекло">
+            <h3>Тонированное стекло</h3>
+            <p>Толщина: 4–8 мм</p>
+            <p>Цена: 2200 руб/м²</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Калькулятор -->
+        <section class="calculator">
+            <h2>Калькулятор расчёта стоимости</h2>
+            <form id="glassCalculator">
+                <div class="form-group">
+            <label for="glassType">Выбранный тип стекла:</label>
+            <input type="text" id="glassType" name="glassType" readonly>
+                </div>
+
+                <div class="form-group">
+            <label for="width">Ширина (мм):</label>
+            <input type="number" id="width" name="width" min="100" max="3210" value="1000">
+                </div>
+
+                <div class="form-group">
+            <label for="height">Высота (мм):</label>
+            <input type="number" id="height" name="height" min="100" max="2250" value="1000">
+                </div>
+
+                <div class="form-group">
+            <label for="quantity">Количество:</label>
+            <input type="number" id="quantity" name="quantity" min="1" value="1">
+                </div>
+
+                <button type="button" onclick="calculateCost()">Рассчитать</button>
+            </form>
+
+            <!-- Результат -->
+            <div id="result" class="result">
+                <h3>Результат расчёта:</h3>
+                <p><strong>Тип стекла:</strong> <span id="resultType">-</span></p>
+                <p><strong>Размер:</strong> <span id="resultSize">-</span> мм</p>
+                <p><strong>Площадь:</strong> <span id="resultArea">-</span> м²</p>
+                <p><strong>Количество:</strong> <span id="resultQuantity">-</span> шт.</p>
+                <p><strong>Цена за м²:</strong> <span id="resultPrice">-</span> руб.</p>
+                <p class="total"><strong>Итого:</strong> <span id="resultTotal">-</span> руб.</p>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
