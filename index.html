@@ -3,178 +3,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Свободное Пространство — Подбор И Каталог</title>
+    <title>ТЖД — Главная страница</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="site-header">
+    <header class="header">
         <div class="container">
-            <div class="logo">
-                <h1>Свободное Пространство</h1>
-                <p>Сайт Для Консультантов И Руководителей</p>
+            <div class="header-content">
+                <div class="logo">
+                    <h1>ТЖД</h1>
+            <span>Транспортная Железнодорожная Компания</span>
+                </div>
+                <nav class="nav">
+                    <a href="#" class="nav-link">Расписание</a>
+            <a href="#" class="nav-link">Билеты</a>
+            <a href="#" class="nav-link">О компании</a>
+            <a href="#" class="nav-link">Контакты</a>
+                </nav>
             </div>
         </div>
     </header>
 
-    <main class="main-content">
-        <div class="container">
+    <main class="main">
+        <section class="hero">
+            <div class="container">
+                <h2>Путешествуйте с комфортом и надёжностью</h2>
+                <p>Обеспечиваем безопасность и пунктуальность рейсов по всей стране и не только</p>
+                <button class="btn btn-primary" onclick="bookTicket()">Забронировать билет</button>
+            </div>
+        </section>
 
-            <!-- Блок выбора стекла -->
-            <section class="glass-selector">
-                <h2>Выберите тип стекла</h2>
-                
-                <div class="glass-grid" id="glassGrid">
-                    <div class="glass-card" data-glass="закалённое" data-price="2500" onclick="selectGlass('закалённое', 2500)">
-                        <div class="glass-img" style="background-image: url('https://avatars.mds.yandex.net/get-altay/15285331/2a00000194d0122c6d390b2bd3f73dad136e/orig')"></div>
-                        <div class="glass-info">
-                            <h3>Закалённое стекло</h3>
-                            <div class="specs">
-                                <span>Толщина: 4–19 мм</span>
-                                <span class="price">2 500 ₽/м²</span>
-                            </div>
-                        </div>
-                    </div>
+        <section class="container">
+            <!-- Ближайший рейс -->
+            <div class="next-train">
+                <h3>Ближайший рейс</h3>
+                <div class="train-card">
+            <div class="train-info">
+                <h4>Москва — Санкт‑Петербург</h4>
+                <div class="train-details">
+                    <div class="detail-item">
+                <span class="label">Отправление:</span>
+                <span class="value">--:--, --.--.2026</span>
+            </div>
+            <div class="detail-item">
+                <span class="label">Прибытие:</span>
+                <span class="value">--:--, --.--.2026</span>
+            </div>
+            <div class="detail-item">
+                <span class="label">Номер поезда:</span>
+                <span class="value">№ 102А</span>
+            </div>
+            <div class="detail-item">
+                <span class="label">Тип:</span>
+                <span class="value badge badge-express">Ночной</span>
+            </div>
+            <div class="detail-item">
+                <span class="label">Вагоны:</span>
+                <span class="value">Купе, СВ, Люкс</span>
+            </div>
+                </div>
+            </div>
+            <button class="btn btn-secondary" onclick="bookTicket()">
+                <span>Забронировать билет</span>
+                <svg width="16" height="16" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M10.5 8l-4.5 4.5-1.414-1.414L8.172 8 4.586 4.414 5.999 3l6 6z"/>
+                </svg>
+            </button>
+                </div>
+            </div>
 
-                    <div class="glass-card" data-glass="триплекс" data-price="3800" onclick="selectGlass('триплекс', 3800)">
-                        <div class="glass-img" style="background-image: url('https://static.tildacdn.com/tild6330-3938-4430-a265-663464326434/pikaso_texttoimage_l.jpeg')"></div>
-                        <div class="glass-info">
-                            <h3>Триплекс</h3>
-                            <div class="specs">
-                                <span>Толщина: 6–40 мм</span>
-                                <span class="price">3 800 ₽/м²</span>
-                            </div>
-                        </div>
-                    </div>
+            <!-- Спойлеры с информацией -->
+            <div class="spoilers">
+                <h2 class="section-title">Полезная информация</h2>
 
-                    <div class="glass-card" data-glass="матовое" data-price="1800" onclick="selectGlass('матовое', 1800)">
-                        <div class="glass-img" style="background-image: url('https://ir.ozone.ru/s3/multimedia-1-n/w1200/7001284847.jpg')"></div>
-                        <div class="glass-info">
-                            <h3>Матовое стекло</h3>
-                            <div class="specs">
-                                <span>Толщина: 4–12 мм</span>
-                                <span class="price">1 800 ₽/м²</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="glass-card" data-glass="тонированное" data-price="2200" onclick="selectGlass('тонированное', 2200)">
-                        <div class="glass-img" style="background-image: url('https://glassstore.org/wp-content/uploads/foto-2-steklo-tonirovannoe-10-mm-bronza.jpg')"></div>
-                        <div class="glass-info">
-                            <h3>Тонированное стекло</h3>
-                            <div class="specs">
-                                <span>Толщина: 4–8 мм</span>
-                                <span class="price">2 200 ₽/м²</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="glass-card" data-glass="узорчатое" data-price="2000" onclick="selectGlass('узорчатое', 2000)">
-                        <div class="glass-img" style="background-image: url('https://via.placeholder.com/300x200/f39c12/ffffff?text=УЗОРЧАТОЕ')"></div>
-                        <div class="glass-info">
-                            <h3>Узорчатое стекло</h3>
-                            <div class="specs">
-                                <span>Толщина: 4–10 мм</span>
-                                <span class="price">2 000 ₽/м²</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="glass-card" data-glass="армированное" data-price="3000" onclick="selectGlass('армированное', 3000)">
-                        <div class="glass-img" style="background-image: url('https://via.placeholder.com/300x200/16a085/ffffff?text=АРМИРОВАННОЕ')"></div>
-                        <div class="glass-info">
-                            <h3>Армированное стекло</h3>
-                            <div class="specs">
-                                <span>Толщина: 5–12 мм</span>
-                                <span class="price">3 000 ₽/м²</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="spoiler">
+            <button class="spoiler-toggle">
+                <span class="toggle-text">О компании ТЖД</span>
+                <span class="arrow">▼</span>
+            </button>
+            <div class="spoiler-content">
+                <p>ТЖД — компания состоящяя в Содружестве Транспротных Компаний с 2026 года, с собственными вагонами и системами. Мы обеспечиваем безопасность, комфорт и пунктуальность каждого рейса.</p>
+            </div>
                 </div>
 
-                <div class="selected-glass" id="selectedGlass">
-                    <span>Выбрано:</span>
-                    <strong id="selectedGlassName">Не выбрано</strong>
-                    <span id="selectedGlassPrice"></span>
+                <div class="spoiler">
+            <button class="spoiler-toggle">
+                <span class="toggle-text">Правила провоза багажа</span>
+                <span class="arrow">▼</span>
+            </button>
+            <div class="spoiler-content">
+                <p>Каждый пассажир имеет право на бесплатный провоз багажа весом до 36 кг и габаритами до 180 см по сумме трёх измерений.</p>
+                <ul class="info-list">
+            <li><strong>Ручная кладь:</strong> до 36 кг</li>
+            <li><strong>Велосипед:</strong> в разобранном виде — 1 место</li>
+            <li><strong>Животные:</strong> в специальных контейнерах</li>
+                </ul>
+            </div>
                 </div>
-            </section>
 
-            <!-- Калькулятор -->
-            <section class="calculator">
-                <h2>Калькулятор стоимости</h2>
-                
-                <form id="glassCalculator" class="calc-form">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="glassType">Тип стекла</label>
-                            <input type="text" id="glassType" readonly placeholder="Выберите тип стекла…">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="width">Ширина (мм)</label>
-                            <input type="number" id="width" min="100" max="3210" value="1000" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="height">Высота (мм)</label>
-                            <input type="number" id="height" min="100" max="2250" value="1000" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="quantity">Количество</label>
-                            <input type="number" id="quantity" min="1" value="1" required>
-                        </div>
-                    </div>
-
-                    <button type="button" class="btn-calc" onclick="calculateCost()">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
-                        Рассчитать
-                    </button>
-                </form>
-
-                <!-- Результат -->
-                <div id="result" class="result-card hidden">
-                    <h3>Результат расчёта</h3>
-                    <div class="result-grid">
-                        <div class="result-item">
-                            <span>Тип стекла:</span>
-                            <strong id="resultType">-</strong>
-                        </div>
-                        <div class="result-item">
-                            <span>Размер:</span>
-                            <strong id="resultSize">-</strong> мм
-                        </div>
-                        <div class="result-item">
-                            <span>Площадь:</span>
-                            <strong id="resultArea">-</strong> м²
-                        </div>
-                        <div class="result-item">
-                            <span>Кол-во:</span>
-                            <strong id="resultQuantity">-</strong> шт.
-                        </div>
-                        <div class="result-item">
-                            <span>Цена за м²:</span>
-                            <strong id="resultPrice">-</strong> ₽
-                        </div>
-                        <div class="result-item total">
-                            <span>Итого:</span>
-                            <strong id="resultTotal">-</strong> ₽
-                        </div>
-                    </div>
+                <div class="spoiler">
+            <button class="spoiler-toggle">
+                <span class="toggle-text">Скидки и льготы</span>
+                <span class="arrow">▼</span>
+            </button>
+            <div class="spoiler-content">
+                <p>Мы предоставляем специальные условия для:</p>
+                <ul class="info-list">
+            <li>Ликеров — <span class="discount"> бан</span></li>
+            <li>Партнёры — <span class="discount">50 % скидка</span></li>
+            <li>Пресса  — <span class="free">бесплатно</span></li>
+            <li>Участники Содружества — <span class="discount">30 % скидка</span></li>
+                </ul>
+            </div>
                 </div>
-            </section>
-
-        </div>
+            </div>
+        </section>
     </main>
 
-    <footer class="site-footer">
+    <section class="booking-section">
+  <div class="container">
+    <h2 class="section-title">Бронирование билета</h2>
+    
+    <div class="booking-card">
+      <form class="booking-form">
+        <div class="form-group">
+          <label for="from-station" class="form-label">Откуда</label>
+          <select id="from-station" class="form-input" required>
+            <option value="" disabled selected>Выберите станцию отправления</option>
+            <option value="station-1">ОЕ</option>
+            <option value="station-2">ОЕ</option>
+            <option value="station-3">ОЕ</option>
+            <option value="station-4">ОЕ</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="to-station" class="form-label">Куда</label>
+          <select id="to-station" class="form-input" required>
+            <option value="" disabled selected>Выберите станцию назначения</option>
+            <option value="station-1">ОК</option>
+            <option value="station-2">ОК</option>
+            <option value="station-3">ОК</option>
+            <option value="station-4">ОК<</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="travel-date" class="form-label">Дата поездки</label>
+          <input type="date" id="travel-date" class="form-input" required>
+        </div>
+
+        <div class="form-group">
+          <label for="passengers" class="form-label">Количество пассажиров</label>
+          <select id="passengers" class="form-input" required>
+            <option value="1">1 пассажир</option>
+            <option value="2">2 пассажира</option>
+            <option value="3">3 пассажира</option>
+            <option value="4">4 пассажира</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="ticket-class" class="form-label">Класс обслуживания</label>
+          <select id="ticket-class" class="form-input" required>
+            <option value="economy">Эконом-класс</option>
+            <option value="business">Бизнес-класс</option>
+            <option value="first">Первый класс</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Стоимость</label>
+          <div class="price-display">
+            <span class="price-amount">от 0 000 ₽</span>
+            <span class="price-info">Итоговая цена будет рассчитана после выбора всех параметров</span>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-full">
+          Забронировать билет
+        </button>
+      </form>
+
+      <div class="booking-summary">
+        <h3 class="summary-title">Ваш маршрут</h3>
+        <div class="route-info">
+          <div class="route-from">
+            <span class="route-label">Откуда:</span>
+            <span class="route-value">—</span>
+          </div>
+          <div class="route-to">
+            <span class="route-label">Куда:</span>
+            <span class="route-value">—</span>
+          </div>
+          <div class="route-date">
+            <span class="route-label">Дата:</span>
+            <span class="route-value">—</span>
+          </div>
+          <div class="route-passengers">
+            <span class="route-label">Пассажиры:</span>
+            <span class="route-value">1</span>
+          </div>
+          <div class="route-class">
+            <span class="route-label">Класс:</span>
+            <span class="route-value">Эконом</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <footer class="footer">
         <div class="container">
-            <p>© 2026 СВОБОДНОЕ ПРОСТРАНСТВО. Все права защищены.</p>
-            <p></p>
+            <div class="footer-content">
+                <div class="footer-section">
+            <h4>ТЖД</h4>
+            <p>Надежные железнодорожные перевозки по всему Роблоксу</p>
+                </div>
+                <div class="footer-section">
+            <h4>Контакты</h4>
+            <p>Телефон: </p>
+            <p>Email: </p>
+                </div>
+                <div class="footer-section">
+            <h4>Соцсети</h4>
+            <div class="social-links">
+                <a href="https://max.ru/join/BM3rU0Q4WHxIAgD6o8lq-ZdZeAatWOzBzb6-TJ8aVqo">MAX</a>
+                <a href="https://t.me/TK_TZHD_RBXL">Telegram</a>
+                <a href="https://t.me/TK_TZHD_RBXL?direct">Поддержка</a>
+            </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 АО Транспортная Железнодорожная Компания RBXL. Все права защищены.</p>
+            </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
 </body>
-
 </html>
